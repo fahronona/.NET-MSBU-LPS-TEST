@@ -11,6 +11,7 @@ web CRUD produk using .net mvc
   "ConnectionStrings": {
     "DefaultConnection": "Server=localhost,3306;Database=[NamaDataBase];User=[NamaUser];Password=[PasswordDataBase];"
   }
+ <br> 
 5. Jalankan aplikasi dengan menakn tombol RUN pada visual studio code
 6.Untuk Melihat Vidio demo aplikasi dapa dilihat di folder "Demo Vidio"
 
