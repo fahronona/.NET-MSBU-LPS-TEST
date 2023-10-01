@@ -1,7 +1,7 @@
 # .NET-MSBU-LPS-TEST
 web CRUD produk using .net mvc
 
-##Cara Menjalankan Aplikasi
+## Cara Menjalankan Aplikasi
 
 1. Buka Folder Repository .NET-MSBU-LPS-TEST kedalam visual studio
 2. Buka Folder "SQL"
@@ -21,6 +21,6 @@ web CRUD produk using .net mvc
 
  
 
-##screenshot
+## screenshot
 <br><br>
 <img width="1440" alt="Screenshot 2023-10-02 at 02 23 26" src="https://github.com/fahronona/.NET-MSBU-LPS-TEST/assets/43464944/a0ee647f-1440-4060-afe6-0bbc6269d343">
