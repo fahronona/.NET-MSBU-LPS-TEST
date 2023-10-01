@@ -1,0 +1,3 @@
+﻿<Project>
+  <Import Project="../build/MSBU-LPS-TEST.props" />
+</Project>

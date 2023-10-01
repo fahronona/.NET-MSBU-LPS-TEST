@@ -1,0 +1,152 @@
+﻿@model CombinedModel
+
+
+@{
+    ViewData["Title"] = "Home Page";
+}
+
+<body>
+
+    <div>
+
+        <form asp-action="Upload" method="post" asp-controller="Home">
+            <div class="form-group">
+                <label asp-for="Barang.NamaBarang"></label>
+                <input asp-for="Barang.NamaBarang" class="form-control" />
+                <span asp-validation-for="Barang.NamaBarang" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="Barang.KodeBarang"></label>
+                <input asp-for="Barang.KodeBarang" class="form-control" />
+                <span asp-validation-for="Barang.KodeBarang" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="Barang.JumlahBarang"></label>
+                <input asp-for="Barang.JumlahBarang" class="form-control" />
+                <span asp-validation-for="Barang.JumlahBarang" class="text-danger"></span>
+            </div><br><br>
+
+            <button type="submit" class="btn btn-primary">Upload</button>
+        </form><br>
+
+        <table class="table table-striped">
+            <thead class="thead-dark">
+                <tr>
+
+                    <th>Nama Barang</th>
+                    <th>Kode Barang</th>
+                    <th>Jumlah Barang</th>
+                    <th>Tanggal</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var data in Model.ListBarang)
+                {
+                    <tr>
+
+                        <td>@data.NamaBarang</td>
+                        <td>@data.KodeBarang</td>
+                        <td>@data.JumlahBarang</td>
+                        <td>@data.Tanggal</td>
+                        <td>
+                            <button type="button" class="btn btn-primary edit-button"  data-product="@data.IdBarang"
+                                    data-id="@data.IdBarang"
+                                    data-nama="@data.NamaBarang"
+                                    data-kode="@data.KodeBarang"
+                                    data-jumlah="@data.JumlahBarang"
+                                    data-tanggal="@data.Tanggal"
+                                    >Edit</button><br><br>  <form method="post" action="/Home/Delete/@data.IdBarang">
+                                <button type="submit" class="btn btn-danger">Delete</button>
+                            </form>
+                        </td>
+                    </tr>
+                }
+
+            </tbody>
+            
+        </table>
+        <div class="modal" tabindex="-1" role="dialog" id="editProductModal">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title">Edit Data</h5>
+                        
+                       
+                    </div>
+                    <div class="modal-body">
+                        <form asp-action="Update" method="post" asp-controller="Home">
+                            <input type="hidden" asp-for="Barang.IdBarang" id="idB" />
+                            <div class="form-group">
+                                <label asp-for="Barang.NamaBarang"></label>
+                                <input asp-for="Barang.NamaBarang" class="form-control" id="namaB" />
+                                <span asp-validation-for="Barang.NamaBarang" class="text-danger"></span>
+                            </div>
+
+                            <div class="form-group">
+                                <label asp-for="Barang.KodeBarang"></label>
+                                <input asp-for="Barang.KodeBarang" class="form-control" id="kodeB" />
+                                <span asp-validation-for="Barang.KodeBarang" class="text-danger"></span>
+                            </div>
+
+                            <div class="form-group">
+                                <label asp-for="Barang.JumlahBarang"></label>
+                                <input asp-for="Barang.JumlahBarang" class="form-control" id="jumlahB" />
+                                <span asp-validation-for="Barang.JumlahBarang" class="text-danger"></span>
+                            </div><br>
+                           
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-dismiss="modal" id="modalOverlay">Close</button>
+                                <button type="submit" class="btn btn-primary">Save changes</button>
+                            </div>
+                        </form><br>
+                    </div>
+                    
+                </div>
+            </div>
+        </div>
+
+
+    </div>
+    <script>
+        {
+
+            var editButtons = document.querySelectorAll('.edit-button');
+            var btnEditProduct = document.getElementById('btnEditProduct');
+            var editProductModal = document.getElementById('editProductModal');
+            var modalOverlay = document.getElementById('modalOverlay');
+
+           
+
+            editButtons.forEach(function (button) {
+                button.addEventListener('click', function () {
+                    var productId = this.getAttribute('data-product');
+                    var dataId = this.getAttribute('data-id');
+                    var dataNama = this.getAttribute('data-nama');
+                    var dataKode = this.getAttribute('data-kode');
+                    var dataJumlah = this.getAttribute('data-jumlah');
+                    var dataTanggal = this.getAttribute('data-tanggal');
+
+                    document.getElementById('idB').value = dataId;
+                    document.getElementById('namaB').value = dataNama;
+                    document.getElementById('kodeB').value = dataKode;
+                    document.getElementById('jumlahB').value = dataJumlah;
+
+
+                    editProductModal.style.display = 'block';
+                    modalOverlay.style.display = 'block';
+                });
+            });
+
+           
+            modalOverlay.addEventListener('click', function () {
+
+                editProductModal.style.display = 'none';
+                modalOverlay.style.display = 'none';
+            });
+        }
+    </script>
+
+</body>

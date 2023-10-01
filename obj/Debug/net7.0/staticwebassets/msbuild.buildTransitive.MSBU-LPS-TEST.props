@@ -1,0 +1,3 @@
+﻿<Project>
+  <Import Project="../buildMultiTargeting/MSBU-LPS-TEST.props" />
+</Project>
