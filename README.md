@@ -5,7 +5,7 @@ web CRUD produk using .net mvc
 
 1. Buka Folder Repository .NET-MSBU-LPS-TEST kedalam visual studio
 2. Buka Folder "SQL"
-3. Buat Table produk & Procedure berdasarkan Query SQL yang terdapat di Folder "SQL"
+3. Buat Table produk & SQL procedure berdasarkan Query SQL yang terdapat di Folder "SQL"
 4. Ubah connection string pada file appsettings.json menjadi seperti ini :
 
         
@@ -14,7 +14,7 @@ web CRUD produk using .net mvc
           }
 
  
- 5. Jalankan aplikasi dengan menakn tombol RUN pada visual studio code <br>
+ 5. Jalankan aplikasi dengan menekan tombol RUN pada visual studio code <br>
  6. Untuk Melihat Vidio demo aplikasi dapa dilihat di folder "Demo Vidio"
    
 
